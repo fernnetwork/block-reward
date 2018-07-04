@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "An incentive scheme to reward node providers for contributions on a private network.",
   "scripts": {
-    "test": "jest",
-    "lint": "eslint .",
+    "test": "npx jest",
+    "lint": "npx eslint .",
     "deploy": "./bin/cobalt-deploy.js"
   },
   "repository": {

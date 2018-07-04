@@ -18,9 +18,9 @@ pragma solidity ^0.4.22;
 
 
 interface BlockReward {
-	// produce rewards for the given benefactors, with corresponding reward codes.
-	// only callable by `SYSTEM_ADDRESS`
-	function reward(address[] benefactors, uint16[] kind)
-		external
-		returns (address[], uint256[]);
+  // produce rewards for the given benefactors, with corresponding reward codes.
+  // only callable by `SYSTEM_ADDRESS`
+  function reward(address[] benefactors, uint16[] kind)
+    external
+    returns (address[], uint256[]);
 }
