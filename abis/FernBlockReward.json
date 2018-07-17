@@ -30,6 +30,10 @@
   {
     "inputs": [
       {
+        "name": "_token",
+        "type": "address"
+      },
+      {
         "name": "_systemAddress",
         "type": "address"
       }

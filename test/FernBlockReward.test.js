@@ -10,35 +10,39 @@ const SYSTEM = addresses[9]
 const gas = 50000000
 
 describe('FernBlockReward', () => {
-  let blockReward
+  let blockReward, leafToken
 
   beforeAll(async () => {
+    web3.require('./LeafToken.sol')
+    leafToken = await web3.deploy('LeafToken', [ SYSTEM ], { from: SYSTEM, gas })
+
     web3.require('./FernBlockReward.sol')
-    blockReward = await web3.deploy('FernBlockReward', [ SYSTEM ], { from: SYSTEM, gas })
+    const links = {
+      '__./ERC20Basic.sol:ERC20Basic___________': leafToken.options.address
+    }
+    blockReward = await web3.deploy('FernBlockReward', [ leafToken.options.address, SYSTEM ], { from: SYSTEM, gas, links })
+
+    // deposit token into block reward contract
+    leafToken.methods.transfer(blockReward.options.address, 100000).send({ from: SYSTEM })
   })
 
   afterAll(async () => {
     web3.close()
   })
 
-  it('should calculate rewards', async () => {
+  it('should transfer rewards to benefactor', async () => {
     const benefactors = [
-      addresses[0],
-      addresses[1],
-      addresses[2],
-      addresses[3]
+      addresses[0]
     ]
+    const kind = [ 0 ]
 
-    const kind = [ 0, 1, 2, 3 ]
+    let balance = await leafToken.methods.balanceOf(addresses[0]).call()
+    expect(balance).toEqual('0')
 
-    // we do a local call so we can get back the return value
-    const rewards = await blockReward.methods.reward(benefactors, kind).call(({ from: SYSTEM }))
-    await blockReward.methods.reward(benefactors, kind).send({ from: SYSTEM })
+    await blockReward.methods.reward(benefactors, kind).send({ from: SYSTEM, gas: 500000 })
 
-    const expectedRewards = [ 1000, 1001, 1002, 1003 ]
-
-    expect(rewards[0]).toEqual(benefactors)
-    expect(rewards[1].map(v => Number(v))).toEqual(expectedRewards)
+    balance = await leafToken.methods.balanceOf(addresses[0]).call()
+    expect(balance).toEqual('1')
   })
 
   it('should reject calls not coming from system', async () => {

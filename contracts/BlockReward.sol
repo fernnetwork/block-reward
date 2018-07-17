@@ -14,7 +14,7 @@
 
 // The block reward contract interface.
 
-pragma solidity ^0.4.22;
+pragma solidity ^0.4.21;
 
 
 interface BlockReward {
