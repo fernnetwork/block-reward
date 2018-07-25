@@ -1,0 +1,46 @@
+[
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "benefactors",
+        "type": "address[]"
+      },
+      {
+        "name": "kind",
+        "type": "uint16[]"
+      }
+    ],
+    "name": "reward",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xf91c2898"
+  },
+  {
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "name": "_systemAddress",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor",
+    "signature": "constructor"
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "name": "block-reward",
+  "version": "1.0.0",
+  "description": "An incentive scheme to reward node providers for contributions on a private network.",
+  "scripts": {
+    "test": "npx jest",
+    "lint": "npx eslint .",
+    "deploy": "./bin/cobalt-deploy.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernnetwork/block-reward.git"
+  },
+  "author": "Fern Network <info@fern.network>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/fernnetwork/block-reward/issues"
+  },
+  "homepage": "https://github.com/fernnetwork/block-reward#readme",
+  "devDependencies": {
+    "@appliedblockchain/cobalt": "^0.8.0",
+    "@appliedblockchain/eslint-config": "^2.3.0",
+    "eslint": "^5.0.1",
+    "jest": "^23.2.0"
+  },
+  "eslintIgnore": [
+    "**/node_modules/*",
+    "reports/*",
+    "coverage/*"
+  ],
+  "eslintConfig": {
+    "extends": "@appliedblockchain/eslint-config/node"
+  }
+}

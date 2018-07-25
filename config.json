@@ -1,0 +1,5 @@
+{
+  "MASTER_NODE_ADDRESS": "0x00Ea169ce7e0992960D3BdE6F5D539C955316432",
+  "SYSTEM_ADDRESS": "0xffffFFFfFFffffffffffffffFfFFFfffFFFfFFfE",
+  "PARITY_WS": "ws://localhost:8546"
+}
